@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/cs-desafio-capitulo/ordense/issues"
   },
-  "homepage": "https://github.com/cs-desafio-capitulo/ordense#readme"
+  "homepage": "https://github.com/cs-desafio-capitulo/ordense#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.7"
+  }
 }
