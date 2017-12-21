@@ -7,9 +7,9 @@ class OrdersController {
     
     const order = new this.Order(req.body);
     await order.save((error, newOrder) => {
-      if (error) return res.status(400).send(error.message);
+      if (error) return res.status(400).json(error.message);
 
-      return res.status(200).send(order);
+      return res.status(201).json(order);
     });
   }
 }
