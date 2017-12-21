@@ -5,12 +5,8 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  order: {
-    type: String,
-    required: true,
-  },
   product: {
-    type: [String],
+    type: Object,
     minlength: 1,
   },
   date: {
@@ -18,7 +14,7 @@ const OrderSchema = new mongoose.Schema({
     default: Date.now,
   },
   status: {
-    type: Boolean,
+    type: String,
     required: true,
   },
 });

@@ -9,6 +9,6 @@ router.get('/', (req, res) => {
   })
 });
 
-router.use('/orders', orderRoutes);
+router.use('/order', orderRoutes);
 
 export default router;
