@@ -1,0 +1,22 @@
+{
+  "name": "ordense",
+  "version": "1.0.0",
+  "description": "Projeto responsável pelo serviço de pedidos (orders) do desafio JS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs-desafio-capitulo/ordense.git"
+  },
+  "keywords": [
+    "Order"
+  ],
+  "author": "Matheus Galdino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs-desafio-capitulo/ordense/issues"
+  },
+  "homepage": "https://github.com/cs-desafio-capitulo/ordense#readme"
+}
