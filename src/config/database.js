@@ -7,6 +7,6 @@ const databaseUrl = 'mongodb://cs-matheus-galdino:cs-desafio@ds161146.mlab.com:6
 
 const connectToDatabase = () => mongoose.connect(databaseUrl, {
   useMongoClient: true,
-}, connectionError => (connectionError) ? connectionError : '');
+}, connectionError => connectionError);
 
 export default { connectToDatabase };
