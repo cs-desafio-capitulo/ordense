@@ -4,7 +4,7 @@
   "description": "Projeto responsável pelo serviço de pedidos (orders) do desafio JS",
   "main": "server.js",
   "scripts": {
-    "babel": "babel-node server.js",
+    "start": "babel-node server.js",
     "babel-debug": "nodemon --exec babel-node server.js",
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
