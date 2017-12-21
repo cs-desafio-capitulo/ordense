@@ -15,3 +15,4 @@
 * Mongoose
 * Jetkins
 * Express
+* esLint (usando o padrão Airbnb)

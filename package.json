@@ -4,6 +4,9 @@
   "description": "Projeto responsável pelo serviço de pedidos (orders) do desafio JS",
   "main": "server.js",
   "scripts": {
+    "babel": "babel-node server.js",
+    "babel-debug": "nodemon --exec babel-node server.js",
+    "pretest": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,9 +24,16 @@
   "homepage": "https://github.com/cs-desafio-capitulo/ordense#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "nodemon": "^1.14.1"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.7"
   }
