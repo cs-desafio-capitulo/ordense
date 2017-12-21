@@ -16,17 +16,17 @@ describe('Routes: Orders', () => {
       {
         "name": "Product a",
         "price": 10,
-        "quantity": 1
+        "quantity": 1,
       },
       {
         "name": "Product b",
         "price": 10,
-        "quantity": 1
+        "quantity": 1,
       }
     ],
     user: "56cb91bdc3464f14678934cd",
     date: "2017-12-21T17:24:23.178Z",
-	  status: "approved"
+	  status: "approved",
   };
 
   describe('POST /order', () => {

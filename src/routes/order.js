@@ -5,12 +5,9 @@ import Order from '../models/order';
 const router = express.Router();
 const ordersController = new OrdersController(Order);
 
-const BASE_URL = '/orders';
-
-router.get('/', (req, res) => {
-  res.send('orders');
-})
-
-.post('/', (req, res) => ordersController.create(req, res));
+router
+  .get('/', (req, res) => res.send('orders'))
+  .get('/:id', (req, res) => ordersController.getById(req, res))
+  .post('/', (req, res) => ordersController.create(req, res))
 
 export default router;
