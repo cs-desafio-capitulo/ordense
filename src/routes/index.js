@@ -1,0 +1,14 @@
+import express from 'express';
+import orderRoutes from './order';
+
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  return res.status(404).json({
+    message: 'Endereço não encontrado',
+  })
+});
+
+router.use('/orders', orderRoutes);
+
+export default router;
