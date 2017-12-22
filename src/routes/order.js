@@ -6,7 +6,6 @@ const router = express.Router();
 const ordersController = new OrdersController(Order);
 
 router
-  .get('/', (req, res) => res.send('orders'))
   .get('/:id', (req, res) => ordersController.getById(req, res))
   .post('/', (req, res) => ordersController.create(req, res))
 
