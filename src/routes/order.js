@@ -7,6 +7,6 @@ const ordersController = new OrdersController(Order);
 
 router
   .get('/:id', (req, res) => ordersController.getById(req, res))
-  .post('/', (req, res) => ordersController.create(req, res))
+  .post('/', (req, res) => ordersController.create(req, res));
 
 export default router;
