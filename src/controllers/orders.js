@@ -1,35 +1,60 @@
+import ProductService from '../services/orders';
+
 class OrdersController {
   constructor(Order) {
+    this.productService = ProductService;
     this.Order = Order;
   }
-
-  // TODO: Verificar se o usuário tá autenticado
-
+  
+  // TODO: Implement middleware to verify if user is already authenticated
+  // TODO: Update the request's products on product's database (by product's service)
+  /**
+   * Responsible for creating a new order into database
+   * @param {*} req 
+   * @param {*} res 
+   */
   async create(req, res) {
-    let products = req.body.product;
+    const orderData = req.body;
+    const products = orderData.product;
+
     if (!products) {
       return res.status(400).json({ message: 'No products were sent' });
     }
 
-    // TODO: Verificar, cada item de product, seu status (Consumindo do serviço de products)
-    // Se a verificação estiver ok, a order segue com o status 'approved'; Caso contrário, 'denied'
+    return Promise.all(products.map(async (product) => {
+      let productFromAPI = await this.productService.prototype.getProductFromService(product.product_id);
+      
+      if (!productFromAPI.product) {
+        product.status = false;
+        return product;
+      }
+      
+      if (productFromAPI.product[0].quantity < product.quantity) {
+        product.status = false;
+      } else {
+        product.status = true;
+        productFromAPI.product[0].quantity -= parseInt(product.quantity);
+      }
 
-    products.map(product => {
-      // Busco o produto no serviço de produto
-      // Retorno esse produto para o array de produtos, incluindo sua quantidade
-      fetch(`url do serviço de produtos/${product.id}`)
-        .then(productDetail => product = productDetail)
-        .catch(error => console.log(error));
-    });
+      return product;
+    })).then(async (product) => {
+      orderData.product = await product;
+      orderData.status = await product.filter(productItem => productItem.status == false).length > 0 ? "denied" : "approved";
 
-    const order = new this.Order(req.body);
-    return order.save((error, newOrder) => {
-      if (error) return res.status(400).json({ message: error.message });
+      const order = new this.Order(orderData);
+      return order.save(async (err, savedOrder) => {
+        if (err) return res.status(400).json({ message: err.message });
 
-      return res.status(201).json(newOrder);
+        return res.status(201).json(savedOrder);
+      })
     });
   }
 
+  /**
+   * Responsible for searching an order, based on its _id
+   * @param {*} req 
+   * @param {*} res 
+   */
   async getById(req, res) {
     await this.Order.find({ _id: req.params.id }, (error, foundOrder) => {
       if (error) return res.status(400).json({ message: error.message });
