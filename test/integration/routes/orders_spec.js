@@ -3,7 +3,7 @@ import Order from '../../../src/models/order';
 describe('Routes: Orders', () => {
   let request;
 
-  beforeEach(async () => {
+  before(async () => {
     const app = await setupApp();
     request = supertest(app);
   });
@@ -25,7 +25,7 @@ describe('Routes: Orders', () => {
   };
 
   describe('POST /order', () => {
-    context('when posting an order', () => {
+    context('when posting an order',  () => {
       it('should return a new order with status code 201', (done) => {
         const newOrder = Object.assign({}, { _id: "5a3be326421b5a4dcba8c133", __v: 0, date: "2017-12-25T22:32:56.657Z" }, defaultOrder);
         const expectedSavedOrder = {
@@ -63,7 +63,7 @@ describe('Routes: Orders', () => {
   });
 
   
-  describe('GET /order/:id', () => {
+  describe('GET /order/:id',  () => {
     context('when getting an order', () => {
       it('should return an specific', (done) => {
         const expectedSavedOrder = {
