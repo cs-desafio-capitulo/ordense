@@ -26,6 +26,7 @@ class OrdersController {
       
       if (!productFromAPI.product) {
         product.status = false;
+        product.total_cost = 0;
         return product;
       }
       
@@ -36,10 +37,14 @@ class OrdersController {
         productFromAPI.product[0].quantity -= parseInt(product.quantity);
       }
 
+      product.total_cost = parseFloat(productFromAPI.product[0].price) * parseInt(product.quantity);
+
       return product;
     })).then(async (product) => {
       orderData.products = await product;
       orderData.status = await product.filter(productItem => productItem.status == false).length > 0 ? "denied" : "approved";
+      orderData.total_cost = orderData.products.map(item => item.total_cost).reduce((accumulated, currentValue) => accumulated + currentValue);
+      
 
       const order = new this.Order(orderData);
       return order.save(async (err, savedOrder) => {

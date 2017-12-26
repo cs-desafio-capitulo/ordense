@@ -9,7 +9,9 @@ describe('Routes: Orders', () => {
   });
 
   after(async () => {
-    Order.remove({});
+    Order.remove({}, {
+      multi: true
+    });
   });
 
   const defaultOrder = {
@@ -33,10 +35,12 @@ describe('Routes: Orders', () => {
               {
                   "status": true,
                   "quantity": 9,
-                  "product_id": "5a3d4c6a9cd05f001f009024"
+                  "product_id": "5a3d4c6a9cd05f001f009024",
+                  "total_cost": 900,
               }
           ],
           "status": "approved",
+          "total_cost": 900,
           "_id": "5a3be326421b5a4dcba8c133",
           "date": "2017-12-25T22:32:56.657Z"
         };
@@ -69,12 +73,14 @@ describe('Routes: Orders', () => {
               {
                   "status": true,
                   "quantity": 9,
-                  "product_id": "5a3d4c6a9cd05f001f009024"
+                  "product_id": "5a3d4c6a9cd05f001f009024",
+                  "total_cost": 900,
               }
           ],
           "status": "approved",
           "_id": "5a3be326421b5a4dcba8c133",
-          "date": "2017-12-25T22:32:56.657Z"
+          "date": "2017-12-25T22:32:56.657Z",
+          "total_cost": 900,
         };
 
         request

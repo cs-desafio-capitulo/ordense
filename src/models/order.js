@@ -17,6 +17,10 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  total_cost: {
+    type: Number,
+    required: true,
+  }
 });
 
 export default mongoose.model('Order', OrderSchema);
