@@ -5,7 +5,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  product: {
+  products: {
     type: Object,
     minlength: 1,
   },
