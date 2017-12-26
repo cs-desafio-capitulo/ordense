@@ -6,7 +6,6 @@
   "scripts": {
     "babel": "babel-node server.js",
     "babel-debug": "nodemon --exec babel-node server.js",
-    "pretest": "eslint --ignore-path .gitignore .",
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "NODE_ENV=test nyc mocha --opts test/integration/mocha.opts  --require babel-register test/integration/**/*_spec.js -s 5000",
     "test:unit": "nyc mocha --opts test/unit/mocha.opts --require babel-register test/unit/**/*_spec.js -s 5000"

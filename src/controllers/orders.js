@@ -15,7 +15,7 @@ class OrdersController {
    */
   async create(req, res) {
     const orderData = req.body;
-    const products = orderData.product;
+    const products = orderData.products;
 
     if (!products) {
       return res.status(400).json({ message: 'No products were sent' });
@@ -38,7 +38,7 @@ class OrdersController {
 
       return product;
     })).then(async (product) => {
-      orderData.product = await product;
+      orderData.products = await product;
       orderData.status = await product.filter(productItem => productItem.status == false).length > 0 ? "denied" : "approved";
 
       const order = new this.Order(orderData);
@@ -56,7 +56,7 @@ class OrdersController {
    * @param {*} res 
    */
   async getById(req, res) {
-    await this.Order.find({ _id: req.params.id }, (error, foundOrder) => {
+    this.Order.find({ _id: req.params.id }, (error, foundOrder) => {
       if (error) return res.status(400).json({ message: error.message });
 
       return res.status(201).json(foundOrder);
