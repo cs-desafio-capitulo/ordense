@@ -24,13 +24,7 @@ class OrdersController {
     const newOrder = await Promise.all(products.map(async (product) => {
       const productFromAPI = await this.productService
         .getProductFromService(product.product_id);
-
-      if (!productFromAPI.product) {
-        product.status = false;
-        product.total_cost = 0;
-        return product;
-      }
-
+        
       if (productFromAPI.product[0].quantity < product.quantity) {
         product.status = false;
       } else {
@@ -69,6 +63,8 @@ class OrdersController {
   async getById(req, res) {
     await this.Order.find({ _id: req.params.id }, async (error, foundOrder) => {
       if (error) return res.status(400).json({ message: error.message });
+
+      if (!foundOrder) return res.status(201).json([]);
 
       return res.status(201).json(foundOrder);
     });
