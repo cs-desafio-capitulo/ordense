@@ -20,7 +20,7 @@ const OrderSchema = new mongoose.Schema({
   total_cost: {
     type: Number,
     required: true,
-  }
+  },
 });
 
 export default mongoose.model('Order', OrderSchema);

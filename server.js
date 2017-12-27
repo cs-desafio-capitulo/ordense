@@ -1,6 +1,7 @@
 import serverConfig from './src/app';
+import env from './src/config/env';
 
-const port = process.env.PORT || 3000;
+const port = env.app.port || 3000;
 
 serverConfig()
   .then(app => app.listen(port, () => console.log(`we're listening on port ${port}`)))
