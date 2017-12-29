@@ -18,7 +18,7 @@ describe('Routes: Orders', () => {
     "user": "56cb91bdc3464f14678934cd",
     "products": [
       {
-        "product_id": "5a3d4c6a9cd05f001f009024",
+        "product_id": "5a45141f5e651c001fc3b7aa",
         "quantity": 1,
       },
     ],
@@ -35,7 +35,7 @@ describe('Routes: Orders', () => {
               {
                   "status": true,
                   "quantity": 1,
-                  "product_id": "5a3d4c6a9cd05f001f009024",
+                  "product_id": "5a45141f5e651c001fc3b7aa",
                   "total_cost": 100,
               }
           ],
@@ -63,8 +63,8 @@ describe('Routes: Orders', () => {
           "user": "56cb91bdc3464f14678934cd",
           "products": [
             {
-              "product_id": "5a3d4c6a9cd05f001f009024",
-              "quantity": 23,
+              "product_id": "5a45141f5e651c001fc3b7aa",
+              "quantity": 10,
             },
           ],
         };
@@ -76,13 +76,13 @@ describe('Routes: Orders', () => {
           "products": [
               {
                   "status": false,
-                  "quantity": 23,
-                  "product_id": "5a3d4c6a9cd05f001f009024",
-                  "total_cost": 2300,
+                  "quantity": 10,
+                  "product_id": "5a45141f5e651c001fc3b7aa",
+                  "total_cost": 1000,
               }
           ],
           "status": "denied",
-          "total_cost": 2300,
+          "total_cost": 1000,
           "_id": "5a3be326421b5a4dcba8c143",
           "date": "2017-12-25T22:32:56.657Z"
         };
@@ -93,7 +93,7 @@ describe('Routes: Orders', () => {
           .end((err, res) => {
             expect(res.statusCode).to.eql(201);
             expect(res.body).to.eql(expectedSavedOrder);
-            console.log(res);
+            
             expect(res.body.products).to.be.an.instanceof(Array);
             
             done(err);
@@ -137,7 +137,7 @@ describe('Routes: Orders', () => {
               {
                   "status": true,
                   "quantity": 1,
-                  "product_id": "5a3d4c6a9cd05f001f009024",
+                  "product_id": "5a45141f5e651c001fc3b7aa",
                   "total_cost": 100,
               }
           ],

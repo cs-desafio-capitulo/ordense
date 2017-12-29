@@ -1,8 +1,11 @@
 import sinon from 'sinon';
-import td from 'testdouble';
 import OrdersController from '../../../src/controllers/orders';
 import Order from '../../../src/models/order';
 
-context('Controller: Orders', () => {
-  
+context('Model: Order', () => {
+  describe('Inserting a new value', () => {
+    it('should insert a new value without any error', () => {
+      
+    });
+  });
 });

@@ -4,6 +4,7 @@ class OrdersController {
   constructor(Order) {
     this.productService = ProductService;
     this.Order = Order;
+    
   }
 
   // TODO: Implement middleware to verify if user is already authenticated
@@ -21,13 +22,13 @@ class OrdersController {
       return res.status(400).json({ message: 'No products were sent' });
     }
 
+    // FIX: Destructure de productFromApi;
+
     const newOrder = await Promise.all(products.map(async (product) => {
       const productFromAPI = await this.productService
         .getProductFromService(product.product_id);
-        
-      if (productFromAPI.product[0].quantity < product.quantity) {
-        product.status = false;
-      } else {
+
+      if (productFromAPI.product[0].quantity >= product.quantity) {
         product.status = true;
         productFromAPI.product[0].quantity -= parseInt(product.quantity);
 
@@ -41,15 +42,16 @@ class OrdersController {
     })).then(async (product) => {
       orderData.products = product;
       orderData.status = product.filter(productItem => productItem.status === false).length > 0 ? 'denied' : 'approved';
-      orderData.total_cost = orderData.products.map(item => item.total_cost)
+      orderData.total_cost = product.map(item => item.total_cost)
         .reduce((accumulated, currentValue) => accumulated + currentValue);
 
       const order = new this.Order(orderData);
-      return order.save(async (err, savedOrder) => {
-        if (err) return res.status(400).json({ message: err.message });
+      
+      // return order.save(async (err, savedOrder) => {
+      //   if (err) return res.status(400).json({ message: err.message });
 
-        return res.status(201).json(savedOrder);
-      });
+      //   return res.status(201).json(savedOrder);
+      // });
     });
 
     return newOrder;
@@ -61,6 +63,7 @@ class OrdersController {
    * @param {*} res
    */
   async getById(req, res) {
+    
     await this.Order.find({ _id: req.params.id }, async (error, foundOrder) => {
       if (error) return res.status(400).json({ message: error.message });
 
