@@ -1,11 +1,16 @@
-import sinon from 'sinon';
 import OrdersController from '../../../src/controllers/orders';
 import Order from '../../../src/models/order';
 
-context('Model: Order', () => {
-  describe('Inserting a new value', () => {
-    it('should insert a new value without any error', () => {
-      
-    });
+context('Controller: Order', () => {
+  /**
+   * Everything works as expected
+   */
+  describe('Good path', () => {
+    it('It should throw an error if not receive the products');
   });
+
+  /**
+   * Things doesn't work as expected
+   */
+  describe('Bad path', () => {});
 });

@@ -3,10 +3,9 @@ import OrdersController from '../controllers/orders';
 import Order from '../models/order';
 
 const router = express.Router();
-const ordersController = new OrdersController(Order);
 
 router
-  .get('/:id', (req, res) => ordersController.getById(req, res))
-  .post('/', (req, res) => ordersController.create(req, res));
+  .get('/:id', OrdersController.getById)
+  .post('/', OrdersController.create);
 
 export default router;

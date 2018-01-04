@@ -7,8 +7,8 @@
     "start": "babel-node server.js",
     "babel-debug": "nodemon --exec babel-node server.js",
     "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "NODE_ENV=test nyc mocha --opts test/unit/mocha.opts test/unit/**/*_spec.js",
-    "test:integration": "NODE_ENV=test nyc mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js"
+    "test:unit": "nyc mocha --opts test/unit/mocha.opts test/unit/**/*_spec.js",
+    "test:integration": "nyc mocha --opts test/integration/mocha.opts test/integration/**/*_spec.js"
   },
   "repository": {
     "type": "git",
