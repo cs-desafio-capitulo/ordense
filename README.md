@@ -1,16 +1,22 @@
 # Ordense
 
-É o repositório que trata do serviço responsável por lidar com os pedidos (que vão possuir produtos), realizar suas validações e seguir para o serviço de pagamento.
+Repository responsible for handling the orders (that will have the desired products), validating and follow to payment service.
 
-### Stack utilizado
-#### Serviços
-* Heroku (versão free)
-* Mlab (versão free)
+### Endpoints
+* /order - [POST] Responsible for save a new order into database
+* /order/:id - [GET] Responsible for bringing a specific order, based on :id parameter
+
+### Stack
+#### Third services
+* Heroku (Free version)
+* Mlab (Free version)
 * Github
 
-#### Definições técnicas
-* Node (versão 8.9.3 LTS)
+#### Technical definitions
+* Node (version 8.9.3 LTS)
 * Git
 * Babel
 * Mongoose
 * Jetkins
+* Express
+* esLint (using Airbnb pattern)
