@@ -22,6 +22,7 @@ const configureServer = () => {
     LogService.sendInformationToLogService(serviceLog);
     next();
   });
+  
   app.use(routes);
 
   return app;
