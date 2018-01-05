@@ -11,7 +11,7 @@ export default {
     url: process.env.DB_URL,
   },
   externalServices: {
-    productService: process.env.PRODUCT_SERVICE,
-    logService: process.env.LOG_SERVICE,
+    productService: process.env.PRODUCT_SERVICE || 'https://shrouded-shelf-58966.herokuapp.com',
+    logService: process.env.LOG_SERVICE || 'https://immense-brushlands-11219.herokuapp.com',
   }
 };
