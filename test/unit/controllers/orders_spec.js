@@ -6,7 +6,13 @@ context('Controller: Order', () => {
    */
   describe('Good path', () => {
     describe('When an creating order', () => {
-      
+      it('should throw a message when not receive products');
+
+      it("should return a 'denied' order when product quantity is not enough");
+
+      it("should return a 'approved' order");
+
+      it("should return a product from service")
     });
 
     describe('When an getting order', () => {
