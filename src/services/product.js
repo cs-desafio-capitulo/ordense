@@ -5,6 +5,7 @@ export default class ProductService {
   static async getProductFromService(id) {
     try {
       const { data } = await axios.get(`${env.externalServices.productService}/products/${id}`);
+      console.log(`${env.externalServices.productService}/products/${id}`);
 
       return { product: data, error: null };
     } catch (err) {
