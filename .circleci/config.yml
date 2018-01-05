@@ -14,10 +14,10 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mongo:latest
       enviroment:
-        DB_URL: "mongodb://cs-matheus-galdino:cs-desafio@ds161146.mlab.com:61146/cs-desafio"
-        PRODUCT_SERVICE: "https://shrouded-shelf-58966.herokuapp.com"
-        AUTH_SERVICE: "https://cs-challenge-auth.herokuapp.com"
-        LOG_SERVICE: "https://immense-brushlands-11219.herokuapp.com"
+        - DB_URL: "mongodb://cs-matheus-galdino:cs-desafio@ds161146.mlab.com:61146/cs-desafio"
+        - PRODUCT_SERVICE: "https://shrouded-shelf-58966.herokuapp.com"
+        - AUTH_SERVICE: "https://cs-challenge-auth.herokuapp.com"
+        - LOG_SERVICE: "https://immense-brushlands-11219.herokuapp.com"
 
     working_directory: ~/ordense
 
